@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import { task } from "hardhat/config";
 import "@nomiclabs/hardhat-waffle";
 
@@ -18,5 +21,11 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
-  solidity: "0.8.4",
+  solidity: "0.8.0",
+  networks: {
+    rinkeby: {
+      url: process.env.ALCHEMY_API_URL,
+      accounts: [process.env.PRIVATE_ACCOUNT_KEY],
+    },
+  },
 };
